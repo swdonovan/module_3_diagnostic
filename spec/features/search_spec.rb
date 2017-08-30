@@ -6,7 +6,7 @@ RSpec.feature "Zip Code Search", :type => :feature do
     # When I visit "/"
     visit "/"
     # And I fill in the search form with 80203
-    fill_in "", :with => "80203"
+    fill_in "Search", :with => "80203"
     # And I click "Locate"
     click_button "Locate"
     # Then I should be on page "/search" with parameters visible in the url

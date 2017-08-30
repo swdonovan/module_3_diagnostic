@@ -1,6 +1,6 @@
-RSpec.describe Station, type: :model do
+RSpec.describe Stations, type: :model do
   it 'Station has attributes' do
-    station = create(:station)
+    station = Stations.new({station_name: "Barney's Door"})
 
     expect(station).to respond_to(:station_name)
   end
