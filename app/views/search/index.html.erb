@@ -1,2 +1,10 @@
 <h1>Search#index</h1>
-<p>Find me in app/views/search/index.html.erb</p>
+<ul>
+  <%@stations.each do |station|  %>
+    <li>Name: <%= station.station_name %></li>
+    <p>Address: <%= station.address %></p>
+    <p>Distance: <%= station.distance %></p>
+    <p>Fuel Types: <%= station.fuel_types %></p>
+    <p>Days Open: <%= station.access_times %></p>
+  <% end %>
+</ul>

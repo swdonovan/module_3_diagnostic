@@ -16,7 +16,7 @@ class StationData
     uri = URI("https://developer.nrel.gov/api/alt-fuel-stations/v1/nearest.json?api_key=#{ENV['NREL_KEY']}&location=#{zipcode}&fuel_type=ELEC%2CLPG&limit=#{quantity}&radius=#{distance}")
     response = Net::HTTP.get(uri)
     stations = JSON.parse(response)
-    stations = stations['fuel_stations'].map { |station| Stations.new(station) }
+    @stations = stations['fuel_stations'].map { |station| Stations.new(station) }
   end
 
   def stations_sorted_by_distance
