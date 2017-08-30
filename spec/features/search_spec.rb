@@ -6,9 +6,11 @@ RSpec.feature "Zip Code Search", :type => :feature do
     # When I visit "/"
     visit "/"
     # And I fill in the search form with 80203
-    fill_in "Search", :with => "80203"
+    fill_in "q", :with => ""
+    fill_in "q", :with => 80203
     # And I click "Locate"
     click_button "Locate"
+    save_and_open_page
     # Then I should be on page "/search" with parameters visible in the url
     expect(current_path).to eq("/search")
     # Then I should see a list of the 10 closest stations within 6 miles sorted by distance
