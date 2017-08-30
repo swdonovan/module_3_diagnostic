@@ -11,9 +11,10 @@ class StationData
   end
 
   def station_search
-    response = get_request("https://developer.nrel.gov/api/alt-fuel-stations/v1/nearest.json?api_key=#{ENV['NREL_KEY']}&location=#{zipcode}&fuel_type=ELEC%2CLPG&limit=#{quantity}")
-    stations = parse_response(response)
-            binding.pry
+    uri = URI("https://developer.nrel.gov/api/alt-fuel-stations/v1/nearest.json?api_key=#{ENV['NREL_KEY']}&location=#{zipcode}&fuel_type=ELEC%2CLPG&limit=#{quantity}")
+    response = Net::HTTP.get(uri)
+    stations = JSON.parse(response)
+    binding.pry
     stations.map { |station| Stations.new(station) }
   end
 end
